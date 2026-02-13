@@ -1,0 +1,46 @@
+<div class="search-bar">
+  <div class="search-fields">
+    <div class="search-field">
+      <app-input
+        label="Código"
+        placeholder="Buscar por ID..."
+        type="number"
+        id="searchId"
+        icon="fas fa-hashtag"
+        [(ngModel)]="searchId"
+        (onEnter)="onEnter()"
+      />
+    </div>
+
+    <div class="search-field search-field-wide">
+      <app-input
+        label="Nombre"
+        placeholder="Buscar por nombre..."
+        type="text"
+        id="searchTerm"
+        icon="fas fa-search"
+        [(ngModel)]="searchTerm"
+        (onEnter)="onEnter()"
+      />
+    </div>
+  </div>
+
+  <div class="search-actions">
+    <app-button
+      variant="info"
+      icon="fas fa-search"
+      [loading]="loading"
+      (onClick)="onSearch()"
+    >
+      Buscar
+    </app-button>
+
+    <app-button
+      variant="secondary"
+      icon="fas fa-eraser"
+      (onClick)="onClear()"
+    >
+      Limpiar
+    </app-button>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="product-form">
+  <div class="form-body">
+    <div class="form-row">
+      <app-input
+        label="Nombre"
+        placeholder="Ingrese el nombre del producto"
+        id="nombre"
+        icon="fas fa-box"
+        [required]="true"
+        [error]="nombreError"
+        formControlName="nombre"
+      />
+    </div>
+
+    <div class="form-row">
+      <app-input
+        label="Precio"
+        placeholder="0.00"
+        type="number"
+        id="precio"
+        icon="fas fa-dollar-sign"
+        [required]="true"
+        [min]="0.01"
+        [step]="0.01"
+        [error]="precioError"
+        formControlName="precio"
+      />
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <app-button
+      type="button"
+      variant="secondary"
+      icon="fas fa-times"
+      (onClick)="onCancel()"
+    >
+      Cancelar
+    </app-button>
+
+    <app-button
+      type="submit"
+      [variant]="isEditMode ? 'warning' : 'success'"
+      [icon]="isEditMode ? 'fas fa-save' : 'fas fa-plus'"
+      [loading]="loading"
+      [disabled]="form.invalid"
+    >
+      {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+    </app-button>
+  </div>
+</form>

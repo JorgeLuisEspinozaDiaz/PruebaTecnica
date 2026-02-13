@@ -1,0 +1,23 @@
+<header class="page-header">
+  <div class="header-content">
+    <div class="header-title">
+      <h1>{{ title }}</h1>
+      @if (subtitle) {
+        <p class="subtitle">{{ subtitle }}</p>
+      }
+    </div>
+
+    @if (showAddButton) {
+      <div class="header-actions">
+        <app-button
+          variant="success"
+          [icon]="addButtonIcon"
+          size="md"
+          (onClick)="onAdd()"
+        >
+          {{ addButtonText }}
+        </app-button>
+      </div>
+    }
+  </div>
+</header>

@@ -1,0 +1,80 @@
+<div class="table-container">
+  @if (loading) {
+    <div class="table-loading">
+      <app-spinner size="lg" text="Cargando productos..." />
+    </div>
+  } @else if (productos.length === 0) {
+    <div class="table-empty">
+      <i class="fas fa-box-open"></i>
+      <h4>No hay productos</h4>
+      <p>Agrega tu primer producto usando el botón "Nuevo Producto"</p>
+    </div>
+  } @else {
+    <div class="table-responsive">
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th class="col-codigo">
+              <i class="fas fa-hashtag"></i> ID
+            </th>
+            <th class="col-nombre">
+              <i class="fas fa-box"></i> Nombre
+            </th>
+            <th class="col-precio">
+              <i class="fas fa-dollar-sign"></i> Precio
+            </th>
+            <th class="col-fecha">
+              <i class="fas fa-calendar"></i> Fecha Creación
+            </th>
+            <th class="col-acciones">
+              <i class="fas fa-cogs"></i> Acciones
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (producto of productos; track trackByProducto($index, producto); let i = $index) {
+            <tr class="fade-in" [style.animation-delay]="(i * 50) + 'ms'">
+              <td class="col-codigo">
+                <span class="codigo-badge">{{ producto.id }}</span>
+              </td>
+              <td class="col-nombre">
+                <span class="nombre-text">{{ producto.nombre }}</span>
+              </td>
+              <td class="col-precio">
+                <span class="precio-badge">{{ formatPrice(producto.precio) }}</span>
+              </td>
+              <td class="col-fecha">
+                <span class="fecha-text">{{ producto.fechaCreacion | date:'dd/MM/yyyy' }}</span>
+              </td>
+              <td class="col-acciones">
+                <div class="action-buttons">
+                  <button
+                    class="action-btn action-edit"
+                    title="Editar"
+                    (click)="onEdit(producto)"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button
+                    class="action-btn action-delete"
+                    title="Eliminar"
+                    (click)="onDelete(producto)"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-footer">
+      <span class="total-records">
+        <i class="fas fa-list"></i>
+        Total: <strong>{{ productos.length }}</strong> producto(s)
+      </span>
+    </div>
+  }
+</div>

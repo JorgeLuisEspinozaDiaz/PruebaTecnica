@@ -1,0 +1,111 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .input-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dark-color);
+
+    .required {
+      color: var(--danger-color);
+      margin-left: 2px;
+    }
+  }
+
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--gray-color);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    z-index: 1;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    border: 2px solid var(--light-color);
+    border-radius: var(--border-radius);
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    transition: var(--transition);
+    outline: none;
+
+    &::placeholder {
+      color: var(--gray-color);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: var(--primary-color);
+    }
+
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+    }
+
+    &:disabled {
+      background-color: var(--light-color);
+      cursor: not-allowed;
+    }
+
+    &:read-only {
+      background-color: #f8f9fa;
+    }
+  }
+
+  &.has-icon {
+    .input-field {
+      padding-left: 42px;
+    }
+  }
+
+  &.has-error {
+    .input-field {
+      border-color: var(--danger-color);
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+      }
+    }
+
+    .input-icon {
+      color: var(--danger-color);
+    }
+  }
+
+  .input-error {
+    font-size: 0.75rem;
+    color: var(--danger-color);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &::before {
+      content: '\f071';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+    }
+  }
+}
+
+// Ocultar flechas del input number
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

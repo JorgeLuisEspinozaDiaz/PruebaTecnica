@@ -1,0 +1,30 @@
+# Compiled files
+*.dll
+*.exe
+*.pdb
+
+# Build directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio directories
+.vs/
+
+# NuGet packages
+packages/
+*.nupkg
+
+# IDE settings
+.idea/
+*.swp
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db

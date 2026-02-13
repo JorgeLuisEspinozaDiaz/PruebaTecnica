@@ -1,0 +1,79 @@
+.product-form {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+
+      i {
+        font-size: 1.1rem;
+      }
+    }
+
+    .edit-badge {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  }
+
+  .form-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .form-row {
+      width: 100%;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 24px;
+    background: var(--light-color);
+    border-top: 1px solid #ddd;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-form {
+    .form-header {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .form-actions {
+      flex-direction: column-reverse;
+
+      app-button {
+        width: 100%;
+
+        ::ng-deep .btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

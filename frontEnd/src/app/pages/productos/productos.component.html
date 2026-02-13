@@ -1,0 +1,76 @@
+<app-main-layout>
+  <!-- Header -->
+  <app-page-header
+    title="Listado de Productos"
+    subtitle="Gestiona tu inventario de productos de forma fácil y rápida"
+    [showAddButton]="true"
+    addButtonText="Nuevo Producto"
+    addButtonIcon="fas fa-plus-circle"
+    (add)="openCreateModal()"
+  />
+
+  <!-- Search Bar -->
+  <section class="search-section">
+    <app-search-bar
+      [loading]="searchLoading"
+      (search)="onSearch($event)"
+      (clear)="onClearSearch()"
+    />
+  </section>
+
+  <!-- Table -->
+  <section class="table-section">
+    <app-product-table
+      [productos]="productos"
+      [loading]="loading"
+      (edit)="openEditModal($event)"
+      (delete)="onDeleteProducto($event)"
+      (view)="onViewProducto($event)"
+    />
+
+    <!-- Paginación -->
+    @if (totalPages > 1) {
+      <div class="pagination">
+        <button
+          class="btn-page"
+          [disabled]="currentPage === 1"
+          (click)="onPageChange(currentPage - 1)">
+          <i class="fas fa-chevron-left"></i>
+          <span>Anterior</span>
+        </button>
+
+        <div class="page-info">
+          <span>Página</span>
+          <span class="page-number">{{ currentPage }}</span>
+          <span class="total-pages">de {{ totalPages }}</span>
+          <span class="total-records"><strong>{{ totalItems }}</strong> registros</span>
+        </div>
+
+        <button
+          class="btn-page"
+          [disabled]="currentPage === totalPages"
+          (click)="onPageChange(currentPage + 1)">
+          <span>Siguiente</span>
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    }
+  </section>
+
+  <!-- Modal Crear/Editar -->
+  <app-modal
+    [isOpen]="isModalOpen"
+    [title]="modalTitle"
+    size="md"
+    (close)="closeModal()"
+  >
+    <app-product-form
+      [producto]="selectedProducto"
+      [loading]="formLoading"
+      (save)="onSaveProducto($event)"
+      (cancel)="closeModal()"
+    />
+  </app-modal>
+
+
+</app-main-layout>

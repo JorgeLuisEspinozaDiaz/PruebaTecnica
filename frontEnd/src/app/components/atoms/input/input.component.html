@@ -1,0 +1,38 @@
+<div class="input-wrapper" [class.has-error]="error" [class.has-icon]="icon">
+  @if (label) {
+    <label [for]="id" class="input-label">
+      {{ label }}
+      @if (required) {
+        <span class="required">*</span>
+      }
+    </label>
+  }
+  
+  <div class="input-container">
+    @if (icon) {
+      <i [class]="icon + ' input-icon'"></i>
+    }
+    
+    <input
+      [type]="type"
+      [id]="id"
+      [name]="name"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [min]="min"
+      [max]="max"
+      [step]="step"
+      [value]="value"
+      (input)="onInputChange($event)"
+      (blur)="onBlur()"
+      (keydown)="onKeyDown($event)"
+      class="input-field"
+    />
+  </div>
+  
+  @if (error) {
+    <span class="input-error">{{ error }}</span>
+  }
+</div>
