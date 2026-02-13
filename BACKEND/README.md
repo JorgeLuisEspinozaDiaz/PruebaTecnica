@@ -81,6 +81,6 @@ cd PruebaTecnica.Api
 dotnet run
 ```
 
-La API estará disponible en `https://localhost:5001` con Swagger en `/swagger`.
+La API estará disponible en `https://localhost:5000` con Swagger en `/swagger`.
 
  
